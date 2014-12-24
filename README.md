@@ -14,5 +14,6 @@ State within the app is kept to one array of the game positions. This means the 
 to maintain as state and mutations are kept to a minimum.
 
 To run the unit tests run the following command:
-
+```
 mocha
+```

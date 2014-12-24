@@ -1,0 +1,77 @@
+<html>
+ <body>
+    <h1>Horse Racing Exercise</h1>
+    <h2>Considerations</h2>
+      <ul>
+        <li>
+          The track length is 1 furlong.
+        </li>
+        <li>
+          There will be a maximum of 7 horses playing. Consequently, the track has 7 lanes in it (numbered from 1 to 7).
+        </li>
+        <li>
+          Each horse has a name and it will be in one lane.
+        </li>
+        <li>
+          To move a horse each virtual player tosses a ball to a set of holes, each hole has a number. This is the number
+          of yards the horse will advance.
+        </li>
+        <li>
+          There are 11 holes for each lane. The numbers in the holes are the following: 5, 5, 5, 5, 10, 10, 10, 20, 20, 40, 60
+        </li>
+        <li>
+          The winner will be the first horse to reach the goal (i.e. the first horse to go acrross 1 furlong)
+        </li>
+        <li>
+          The race ends when the first horse reaches the goal. The positions of the other horses will stand frozen even
+          if more balls are thrown.
+        </li>
+      </ul>
+
+      <h2>Input</h2>
+      <ul>
+        <li>
+          The first line of the input will contain the names of the horses ordered according to the lane they will be running in:
+          <code>HORSE1, HORSE2, ....</code>
+        </li>
+        <li>
+          The rest of the lines of the input will represent a ball throw. The format will be: <code>LANE_NUMBER YARDS</code>.
+        </li>
+      </ul>
+
+      <h2>Output</h2>
+      <p>
+        The output will be the list of horses ordered by position in the race:
+        <pre>
+          Position, Lane, Horse name
+          1, 2, HORSE2
+          2, 5, HORSE5
+        </pre>
+      </p>
+    <ul>
+        <% for(var i=0; i<validationMessages.length; i++) {%>
+           <li><%= i + 1 %>. <%= validationMessages[i] %></li>
+        <% } %>
+    </ul>
+    <form action="/startRace" id="usrform" method="post">
+      <textarea name="input" rows="10" cols="50"><%= input %></textarea>
+      <input type="submit">
+    </form>
+    Sample Input:
+
+    <p>Star, Dakota, Cheyenne, Misty, Spirit<br />
+        1 60 <br />
+        3 5  <br />
+        1 60 <br />
+        4 5  <br />
+        4 10 <br />
+        2 5  <br />
+        5 10 <br />
+        1 60 <br />
+        3 20 <br />
+        7 10 <br />
+        1 40 <br />
+        2 60 <br />
+    </p>
+ </body>
+</html>

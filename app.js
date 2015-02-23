@@ -1,3 +1,5 @@
+require("babel/register");
+
 "use strict";
 var express = require('express');
 var path = require('path');
@@ -10,7 +12,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-var index = require('./routes/index');
+var index = require('./js/routes/index');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());

@@ -1,13 +1,13 @@
 "use strict";
 
-var race = [];
+let race = [];
 var _ = require('lodash');
-var validScores = [5, 5, 5, 5, 10, 10, 10, 20, 20, 40, 60];
+const validScores = [5, 5, 5, 5, 10, 10, 10, 20, 20, 40, 60];
 
 function setupRace(racers) {
-    var lane = 0;
-    var color = ['red', 'green', 'orange', 'yellow', 'purple', 'blue'];
-    race = _.map(racers, function(racer) {
+    let lane = 0;
+    let color = ['red', 'green', 'orange', 'yellow', 'purple', 'blue'];
+    race = _.map(racers, racer => {
                             lane = lane + 1;
                             return {name: racer, score: 0, lane: lane, color: color[lane - 1]}
                         });
@@ -20,7 +20,7 @@ function ballToss(lane, score) {
 }
 
 function isWinner() {
-    var winnerArray = _.find(race, function(racer) {  return racer.score >= 220;});
+    let winnerArray = _.find(race, racer => {  return racer.score >= 220;});
     return (winnerArray !== undefined);
 }
 
@@ -40,11 +40,11 @@ function letsgo(gameLines){
      var gameLines = splitInput(gameLines);
      var racers = gameLines[0].split(', ');
      setupRace(racers);
-     _.forEach(_.tail(gameLines), function(gameLine) {
+     _.forEach(_.tail(gameLines), gameLine => {
           if (isWinner() == false) {
-             var toss = gameLine.split(" ");
-             var lane = parseInt(toss[0]);
-             var score = parseInt(toss[1]);
+             let toss = gameLine.split(" ");
+             let lane = parseInt(toss[0]);
+             let score = parseInt(toss[1]);
              if (lane > 0 && lane < racers.length + 1) {
                 ballToss(lane, score);
              }
@@ -59,7 +59,7 @@ function validInput(gameLines) {
      var validMessages = [];
      var gameLines = splitInput(gameLines);
      if (gameLines.length > 1) {
-        var racers = gameLines[0].split(', ');
+        let racers = gameLines[0].split(', ');
         if  (racers.length < 1) {
            validMessages.push("Must be a racer");
         }
@@ -73,11 +73,11 @@ function validInput(gameLines) {
 }
 
 module.exports = {
-    setupRace: setupRace,
-    currentRace: currentRace,
-    ballToss: ballToss,
-    isWinner: isWinner,
-    racePositions: racePositions,
-    letsgo: letsgo,
-    validInput: validInput
+    setupRace,
+    currentRace,
+    ballToss,
+    isWinner,
+    racePositions,
+    letsgo,
+    validInput
 };

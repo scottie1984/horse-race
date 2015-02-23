@@ -2,7 +2,7 @@
 // force the test environment to 'test'
 process.env.NODE_ENV = 'test';
 var assert = require('assert');
-var race = require('../../race/race');
+var race = require('../../src/race/race');
 
 describe('Race spec', function() {
 
@@ -22,32 +22,35 @@ describe('Race spec', function() {
 
     it('add score for ball toss to lane', function() {
         race.setupRace(['Do', 'Re', 'Mi']);
-        race.ballToss(2, 20);
+        race.ballToss(2, 10);
         race.ballToss(2, 5);
-        race.ballToss(3, 2);
+        race.ballToss(3, 5);
         var currentRace = race.currentRace();
-        assert.deepEqual(currentRace, [{name: 'Do', score: 0, lane: 1, color: 'red'}, {name: 'Re', score: 25, lane: 2, color: 'green'}, {name: 'Mi', score: 2, lane: 3, color: 'orange'}]);
+        assert.deepEqual(currentRace, [{name: 'Do', score: 0, lane: 1, color: 'red'}, {name: 'Re', score: 15, lane: 2, color: 'green'}, {name: 'Mi', score: 5, lane: 3, color: 'orange'}]);
     });
 
     it('return false if there is no race winner', function() {
         race.setupRace(['Do', 'Re', 'Mi']);
-        race.ballToss(2, 20);
+        race.ballToss(2, 10);
         assert.equal(race.isWinner(), false);
     });
 
     it('return true if there is no race winner', function() {
         race.setupRace(['Do', 'Re', 'Mi']);
-        race.ballToss(2, 240);
+        race.ballToss(2, 60);
+        race.ballToss(2, 60);
+        race.ballToss(2, 60);
+        race.ballToss(2, 60);
         assert.equal(race.isWinner(), true);
     });
 
     it('add score for ball toss to lane', function() {
         race.setupRace(['Do', 'Re', 'Mi']);
-        race.ballToss(2, 20);
+        race.ballToss(2, 10);
         race.ballToss(2, 5);
-        race.ballToss(3, 2);
+        race.ballToss(3, 5);
         var racePositions = race.racePositions();
-        assert.deepEqual(racePositions, [{name: 'Re', score: 25, lane: 2, color: 'green'}, {name: 'Mi', score: 2, lane: 3, color: 'orange'}, {name: 'Do', score: 0, lane: 1, color: 'red'}]);
+        assert.deepEqual(racePositions, [{name: 'Re', score: 15, lane: 2, color: 'green'}, {name: 'Mi', score: 5, lane: 3, color: 'orange'}, {name: 'Do', score: 0, lane: 1, color: 'red'}]);
     });
 
     it('calculate the winner of the race correctly', function() {

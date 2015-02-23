@@ -20,11 +20,19 @@
     "grunt-contrib-compass": "~1.0.1",
     "lodash": "~2.4.1",
     "poet": "~2.0.0",
-    "debug" : "latest",
+    "debug": "latest",
     "express": "latest",
     "cookie-parser": "~1.0.1",
     "body-parser": "~1.0.0",
     "ejs": "~0.8.5",
-    "reload": "latest"
+    "reload": "latest",
+    "babel": "latest"
+  },
+  "devDependencies": {
+    "grunt-babel": "^4.0.0",
+    "grunt-es6-module-transpiler": "^0.6.0",
+    "grunt-traceur": "^0.5.1",
+    "load-grunt-tasks": "^3.1.0",
+    "traceur": "0.0.85"
   }
 }

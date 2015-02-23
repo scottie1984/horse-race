@@ -1,5 +1,9 @@
 "use strict";
 
+var _slicedToArray = function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { var _arr = []; for (var _iterator = arr[Symbol.iterator](), _step; !(_step = _iterator.next()).done;) { _arr.push(_step.value); if (i && _arr.length === i) break; } return _arr; } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } };
+
+var _toArray = function (arr) { return Array.isArray(arr) ? arr : Array.from(arr); };
+
 var race = [];
 var _ = require("lodash");
 var validScores = [5, 5, 5, 5, 10, 10, 10, 20, 20, 40, 60];
@@ -39,14 +43,27 @@ function splitInput(gameLines) {
 }
 
 function letsgo(gameLines) {
-    var gameLines = splitInput(gameLines);
-    var racers = gameLines[0].split(", ");
+    var _splitInput = splitInput(gameLines);
+
+    var _splitInput2 = _toArray(_splitInput);
+
+    var racersLine = _splitInput2[0];
+
+    var game = _splitInput2.slice(1);
+
+    var racers = racersLine.split(", ");
     setupRace(racers);
-    _.forEach(_.tail(gameLines), function (gameLine) {
+    _.forEach(game, function (gameLine) {
         if (isWinner() == false) {
-            var toss = gameLine.split(" ");
-            var lane = parseInt(toss[0]);
-            var score = parseInt(toss[1]);
+            var _gameLine$split$map = gameLine.split(" ").map(function (x) {
+                return parseInt(x);
+            });
+
+            var _gameLine$split$map2 = _slicedToArray(_gameLine$split$map, 2);
+
+            var lane = _gameLine$split$map2[0];
+            var score = _gameLine$split$map2[1];
+
             if (lane > 0 && lane < racers.length + 1) {
                 ballToss(lane, score);
             }
@@ -74,12 +91,13 @@ function validInput(gameLines) {
     return validMessages;
 }
 
-module.exports = {
-    setupRace: setupRace,
-    currentRace: currentRace,
-    ballToss: ballToss,
-    isWinner: isWinner,
-    racePositions: racePositions,
-    letsgo: letsgo,
-    validInput: validInput
-};
+exports.setupRace = setupRace;
+exports.currentRace = currentRace;
+exports.ballToss = ballToss;
+exports.isWinner = isWinner;
+exports.racePositions = racePositions;
+exports.letsgo = letsgo;
+exports.validInput = validInput;
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});

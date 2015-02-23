@@ -1,9 +1,12 @@
 "use strict";
 
+var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+
 var express = require("express");
 var router = express.Router();
 var _ = require("lodash");
-var race = require("../race/race");
+
+var race = _interopRequireWildcard(require("../race/race"));
 
 /* GET home page. */
 router.get("/", function (req, res) {

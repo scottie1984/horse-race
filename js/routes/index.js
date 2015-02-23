@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var _ = require('lodash');
-var race = require('../race/race');
+import * as race from '../race/race';
 
 /* GET home page. */
 router.get('/', function(req, res) {

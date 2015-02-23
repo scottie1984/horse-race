@@ -37,14 +37,12 @@ function splitInput(gameLines) {
 }
 
 function letsgo(gameLines){
-     var gameLines = splitInput(gameLines);
-     var racers = gameLines[0].split(', ');
+     let [racersLine, ...game] = splitInput(gameLines);
+     var racers = racersLine.split(', ');
      setupRace(racers);
-     _.forEach(_.tail(gameLines), gameLine => {
+     _.forEach(game, gameLine => {
           if (isWinner() == false) {
-             let toss = gameLine.split(" ");
-             let lane = parseInt(toss[0]);
-             let score = parseInt(toss[1]);
+             let [lane, score] = gameLine.split(" ").map(x => parseInt(x));
              if (lane > 0 && lane < racers.length + 1) {
                 ballToss(lane, score);
              }
@@ -72,7 +70,7 @@ function validInput(gameLines) {
      return validMessages;
 }
 
-module.exports = {
+export {
     setupRace,
     currentRace,
     ballToss,
